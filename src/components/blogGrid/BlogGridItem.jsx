@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 export default function BlogGridItem({ blog }) {
-    const { id, image, createdAt, likes, title, tags, isSaved } = blog
+    const { id, image, createdAt, likes, title, tags, isSaved } = blog || {}
     return (
         <div className="lws-card">
             <Link to={`/blog/${id}`}>
@@ -12,8 +12,8 @@ export default function BlogGridItem({ blog }) {
                     <p className="lws-publishedDate">{createdAt}</p>
                     <p className="lws-likeCount"><i className="fa-regular fa-thumbs-up"></i>{likes}</p>
                 </div>
-                <Link to='/blog/asdf' className="lws-postTitle"> {title} </Link>
-                <div className="lws-tags">{tags.map(tag => <span>{tag}, </span>)}</div>
+                <Link to={`/blog/${id}`} className="lws-postTitle"> {title} </Link>
+                <div className="lws-tags">{tags.map(tag => <span key={tag.index}>{tag}, </span>)}</div>
                 <div className="flex gap-2 mt-4">
                     <span className={isSaved ? `lws-badge` : `hidden`}> Saved </span>
                 </div>

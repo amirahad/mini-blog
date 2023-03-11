@@ -1,20 +1,22 @@
 import { Link } from 'react-router-dom'
-import ai from '../../assets/images/ai.jpg'
 
-export default function RelatedPostItem() {
+export default function RelatedPostItem({ blog }) {
+    const { id, image, createdAt, title, tags } = blog || {}
     return (
         <div className="card">
-            <Link to='/blog/asdf'>
-                <img src={ai} className="card-image" alt="" />
+            <Link to={`/blog/${id}`}>
+                <img src={image} className="card-image" alt={title} />
             </Link>
             <div className="p-4">
-                <Link to='/blog/asdf' className="text-lg post-title lws-RelatedPostTitle">
-                    Top Github Alternatives
+                <Link to={`/blog/${id}`} className="text-lg post-title lws-RelatedPostTitle">
+                    {title}
                 </Link>
                 <div className="mb-0 tags">
-                    <span>#python,</span> <span>#tech,</span> <span>#git</span>
+                    {
+                        tags?.map(tag => <span key={tag.index} className="tag">#{tag}, </span>)
+                    }
                 </div>
-                <p>2010-03-27</p>
+                <p>{createdAt}</p>
             </div>
         </div>
     )

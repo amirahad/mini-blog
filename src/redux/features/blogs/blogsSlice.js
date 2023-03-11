@@ -10,8 +10,8 @@ const initialState = {
 
 export const fetchBlogs = createAsyncThunk(
     'blogs/fetchBlogs',
-    async () => {
-        const blogs = await getBlogs()
+    async ({filter,sort}) => {
+        const blogs = await getBlogs(filter,sort)
         return blogs
     }
 )

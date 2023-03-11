@@ -7,12 +7,15 @@ import BlogGridItem from './BlogGridItem'
 export default function BlogGrid() {
     const dispatch = useDispatch()
     const { blogs, isLoading, isError, errorMessage } = useSelector(state => state.blogs)
+    const { filter, sort } = useSelector(state => state.filterBlogs)
+
+    //console.log(filter)
 
     useEffect(() => {
-        dispatch(fetchBlogs())
-    }, [dispatch])
+        dispatch(fetchBlogs({ filter, sort }))
+    }, [dispatch, filter, sort])
 
-    let content
+    let content;
 
     if (isLoading && !isError) {
         content = <Loading />
