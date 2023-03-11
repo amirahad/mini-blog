@@ -1,7 +1,20 @@
 import React from 'react'
+import BlogDetails from '../components/blogDetails/BlogDetails'
+import Navbar from '../components/navbar/Navbar'
+import RelatedPosts from '../components/relatedPosts/RelatedPosts'
+import GoHome from '../components/ui/GoHome'
 
 export default function Blog() {
     return (
-        <div>Blog</div>
+        <>
+            <GoHome />
+            <section className="post-page-container">
+                <BlogDetails />
+                <aside>
+                    <h4 className="mb-4 text-xl font-medium" id="lws-relatedPosts">Related Posts</h4>
+                    <RelatedPosts />
+                </aside>
+            </section>
+        </>
     )
 }
