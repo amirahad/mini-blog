@@ -1,6 +1,5 @@
 import React from 'react'
 import BlogDetails from '../components/blogDetails/BlogDetails'
-import Navbar from '../components/navbar/Navbar'
 import RelatedPosts from '../components/relatedPosts/RelatedPosts'
 import GoHome from '../components/ui/GoHome'
 
